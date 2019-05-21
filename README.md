@@ -2,6 +2,9 @@
 
 WIP
 
+#TODO
+- preprocess.py does not work anymore
+
 This script crops an input image and generate a side by side image for pix2pix
 
 **Input**

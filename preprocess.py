@@ -69,7 +69,7 @@ for i,path in enumerate(paths):
 	    im = PIL.Image.open(path)
 	    im = im.convert('RGB')
 	    if do_crop:
-		resize_shape = list(out_shape)
+			resize_shape = list(out_shape)
 		if im.width < im.height:
 		    resize_shape[1] = int(round(float(im.height) / im.width * dim))
 		else:

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 @author: memo
-
 loads bunch of images from a folder (and recursively from subfolders)
 preprocesses (resize or crop, canny edge detection) and saves into a new folder
 """
@@ -27,8 +26,9 @@ in_path = os.path.join(root_path, '2-process')
 out_path = os.path.join(root_path, '3-final')
 
 
+
 #########################################
-out_path 
+out_path += '_' + str(dim) + '_p2p_canny'
 if do_crop:
     out_path += '_crop'
 
@@ -57,40 +57,39 @@ print('{} files found'.format(len(paths)))
 
 for i,path in enumerate(paths):
     try:
-	    path_d, path_f = os.path.split(path)
-	    
-	    # combine path and filename to create unique new filename
-	    out_fname = path_d.split('/')[-1] + '_' + path_f
-		                    
-	    # take last n characters so doesn't go over filename length limit
-	    out_fname = os.path.splitext(out_fname)[0][-max_fname_len+4:] + '.jpg'
-	    
-	    print('File {} of {}, {}'.format(i, len(paths), out_fname))
-	    im = PIL.Image.open(path)
-	    im = im.convert('RGB')
-	    if do_crop:
-			resize_shape = list(out_shape)
-		if im.width < im.height:
-		    resize_shape[1] = int(round(float(im.height) / im.width * dim))
-		else:
-		    resize_shape[0] = int(round(float(im.width) / im.height * dim))
-		im = im.resize(resize_shape, PIL.Image.BICUBIC)
-		hw = int(im.width / 2)
-		hh = int(im.height / 2)
-		hd = int(dim/2)
-		area = (hw-hd, hh-hd, hw+hd, hh+hd)
-		im = im.crop(area)            
-		    
-	    else:
-		im = im.resize(out_shape, PIL.Image.BICUBIC)
-		
-	    a1 = np.array(im) 
-	    a2 = cv2.Canny(a1, canny_thresh1, canny_thresh2)
-	    a2 = cv2.cvtColor(a2, cv2.COLOR_GRAY2RGB)                 
-	    a3 = np.concatenate((a1,a2), axis=1)
-	    im = PIL.Image.fromarray(a3)                     
-		               
-	    im.save(os.path.join(out_path, out_fname))
-    except Exception:
+        path_d, path_f = os.path.split(path)
+        
+        # combine path and filename to create unique new filename
+        out_fname = path_d.split('/')[-1] + '_' + path_f
+                                
+        # take last n characters so doesn't go over filename length limit
+        out_fname = os.path.splitext(out_fname)[0][-max_fname_len+4:] + '.jpg'
+        
+        print('File {} of {}, {}'.format(i, len(paths), out_fname))
+        im = PIL.Image.open(path)
+        im = im.convert('RGB')
+        if do_crop:
+            resize_shape = list(out_shape)
+            if im.width < im.height:
+                resize_shape[1] = int(round(float(im.height) / im.width * dim))
+            else:
+                resize_shape[0] = int(round(float(im.width) / im.height * dim))
+            im = im.resize(resize_shape, PIL.Image.BICUBIC)
+            hw = int(im.width / 2)
+            hh = int(im.height / 2)
+            hd = int(dim/2)
+            area = (hw-hd, hh-hd, hw+hd, hh+hd)
+            im = im.crop(area)            
+                
+        else:
+            im = im.resize(out_shape, PIL.Image.BICUBIC)
+            
+        a1 = np.array(im) 
+        a2 = cv2.Canny(a1, canny_thresh1, canny_thresh2)
+        a2 = cv2.cvtColor(a2, cv2.COLOR_GRAY2RGB)                 
+        a3 = np.concatenate((a1,a2), axis=1)
+        im = PIL.Image.fromarray(a3)                     
+                        
+        im.save(os.path.join(out_path, out_fname))
+     except Exception:
         pass
-

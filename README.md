@@ -26,7 +26,7 @@ Idealy inside a docker image
 ## To Use
 
 ### Get images
-googleimagesdownload -k keyword -i 1-input
+googleimagesdownload -k keyword -o 1-input -n
 
 
 

@@ -9,5 +9,6 @@ mkdir pix2pix-tensorflow/data/model
 git clone https://github.com/hardikvasa/google-images-download.git
 cd google-images-download && python setup.py install
 cd ..
+sudo rm -r google-images-download
 
 #pip install requirments

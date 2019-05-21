@@ -25,6 +25,9 @@ Idealy inside a docker image
 
 ## To Use
 
+### Get images
+googleimagesdownload -k keyword -i 1-input
+
 
 
 Put your pictures in the 1-input folder and in a terminal launch

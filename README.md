@@ -1,4 +1,4 @@
-# pix2pix-datasetGen
+# pix2pix-glicth generator
 
 WIP
 
@@ -18,6 +18,9 @@ The preprocess script comes from https://github.com/memo/webcam-pix2pix-tensorfl
  - Numpy
  - CV2
  - PIL
+
+## Install 
+Idealy inside a docker image
 
 
 ## To Use

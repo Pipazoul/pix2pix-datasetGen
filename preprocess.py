@@ -28,9 +28,9 @@ out_path = os.path.join(root_path, '3-final')
 
 
 #########################################
-out_path += '_' + str(dim) + '_p2p_canny'
+out_path
 if do_crop:
-    out_path += '_crop'
+    out_path
 
 out_shape = (dim, dim)
 
@@ -91,5 +91,5 @@ for i,path in enumerate(paths):
         im = PIL.Image.fromarray(a3)                     
                         
         im.save(os.path.join(out_path, out_fname))
-     except Exception:
+    except Exception:
         pass

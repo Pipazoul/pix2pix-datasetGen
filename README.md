@@ -25,6 +25,7 @@ The preprocess script comes from https://github.com/memo/webcam-pix2pix-tensorfl
 ## Install 
 Idealy inside a docker image
 
+> pip install opencv-python
 > pip install Pillow
 
 > git clone https://github.com/Pipazoul/pix2pix_glitch_generator.git
@@ -41,3 +42,10 @@ sh prepare_dataset.sh
 
 Put your pictures in the 1-input folder and in a terminal launch
 > sh start.sh 
+
+
+# FAQ
+
+If error "libSM.so.6: cannot open shared object file"
+
+> apt-get install -y libsm6 libxext6 libxrender-dev

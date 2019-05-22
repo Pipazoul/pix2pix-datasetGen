@@ -1,4 +1,8 @@
 #!/bin/bash
+
+pip install opencv-python Pillow
+apt-get install -y libsm6 libxext6 libxrender-dev
+apt-get install libglib2.0-0
 sudo rm -r  pix2pix-tensorflow
 git clone https://github.com/affinelayer/pix2pix-tensorflow.git
 mkdir pix2pix-tensorflow/data

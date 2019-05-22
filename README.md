@@ -25,12 +25,15 @@ The preprocess script comes from https://github.com/memo/webcam-pix2pix-tensorfl
 ## Install 
 Idealy inside a docker image
 
-> pip install opencv-python
-> pip install Pillow
+### CPU
+> docker run --rm -ti --name pix2pix -v /home/yassin/Documents/pix2pix_glitch_generator/mount:  tensorflow/tensorflow bash
+
 
 > git clone https://github.com/Pipazoul/pix2pix_glitch_generator.git
 
 sh install.sh
+
+### GPU
 
 ## To Use
 
@@ -38,14 +41,24 @@ sh install.sh
 googleimagesdownload -k keyword -o 1-input -n
 
 ### Process the images
-sh prepare_dataset.sh 
+>sh prepare_dataset.sh 
 
 Put your pictures in the 1-input folder and in a terminal launch
-> sh start.sh 
+> sh prepare_dataset.sh
 
+### Train
+> sh train.sh
+
+### Test
+> sh generate.sh
 
 # FAQ
 
 If error "libSM.so.6: cannot open shared object file"
 
+## Nvidia Docker
 > apt-get install -y libsm6 libxext6 libxrender-dev
+
+or docker
+
+> apt-get install libglib2.0-0

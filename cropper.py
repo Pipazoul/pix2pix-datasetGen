@@ -51,7 +51,7 @@ def imageCropper(fullpath, name):
 
 
 
-for item in dirs:
+for item in sorted(dirs):
     fullpath = os.path.join(path,item)         #corrected
     if os.path.isfile(fullpath):
         try:

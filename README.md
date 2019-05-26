@@ -26,8 +26,11 @@ The preprocess script comes from https://github.com/memo/webcam-pix2pix-tensorfl
 Idealy inside a docker image
 
 ### CPU
-> docker run --rm -ti --name pix2pix -v /home/yassin/Documents/pix2pix_glitch_generator/mount:  tensorflow/tensorflow bash
+> docker run --rm -ti --name pix2pix -v /home/yassin/Documents/pix2pix_glitch_generator/mount:/root  tensorflow/tensorflow bash
 
+> apt update
+
+> apt install git
 
 > git clone https://github.com/Pipazoul/pix2pix_glitch_generator.git
 
@@ -51,6 +54,9 @@ Put your pictures in the 1-input folder and in a terminal launch
 
 ### Test
 > sh generate.sh
+
+#### Complie sequence of images to video
+ffmpeg -r 60 -f image2 -s 200x200 -i 2-process_%04d-outputs.png -vcodec libx264 -crf 25  -pix_fmt yuv420p render.mp4
 
 # FAQ
 

@@ -46,10 +46,14 @@ TODO
 
 ## To Use
 
-### Get images from google
-googleimagesdownload -k keyword -o 1-input -n
+### 1 - Download lots of images (8000 at least)
 
-### 1- Process the images
+You can use googleimagedownload for example
+
+>googleimagesdownload -k keyword -o 1-input -n
+
+### 2- Process the images
+The pictures need to be 
 Put your pictures in the 1-input folder and in a terminal launch
 > sh prepare_dataset.sh
 
@@ -57,16 +61,29 @@ Put your pictures in the 1-input folder and in a terminal launch
 > sh train.sh
 It will move the files from 3-final to pix2pix/data/input and start the training
 
-### 3- Get ref media and process
-youtube-dl -o 1-input youtube_url 
+### 3- Get ref media 
+>youtube-dl -o 1-input youtube_url 
+
+
+
+### Export all frames from video and process them
+>ffmpeg -i pathToVideo outputPath
 
 > sh process_media.sh
+
+
 
 ### 3 - Test
 > sh generate.sh
 
-#### Complie sequence of images to video
-ffmpeg -r 60 -f image2 -s 200x200 -i 2-process_%04d-outputs.png -vcodec libx264 -crf 25  -pix_fmt yuv420p render.mp4
+#### Compile sequence of images to video
+
+move the -output*.png files only
+
+and compile
+
+>ffmpeg -framerate 30 -pattern_type glob -i '*.png'   -c:v libx264 -r 30 -pix_fmt yuv420p ../out.mp4
+
 
 # FAQ
 

@@ -2,7 +2,7 @@ from PIL import Image
 import os.path, sys
 
 
-path = "1-input"
+path = "../1-input"
 dirs = os.listdir(path)
 
 
@@ -46,7 +46,7 @@ def imageCropper(fullpath, name):
 
 
 	
-    thumb.save('2-process/{}.jpg'.format(i))
+    thumb.save('../2-process/{}.jpg'.format(i))
     print(i)
 
 

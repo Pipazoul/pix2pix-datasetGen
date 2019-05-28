@@ -1,5 +1,5 @@
 rm pix2pix-tensorflow/data/input/*
-find 3-final/ -type f -print0 | xargs -0 mv -t pix2pix-tensorflow/data/input/
+mv 3-final/* pix2pix-tensorflow/data/input/
 
 python pix2pix-tensorflow/pix2pix.py \
   --mode train \

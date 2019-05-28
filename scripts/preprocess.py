@@ -22,8 +22,8 @@ canny_thresh1 = 100
 canny_thresh2 = 200
 
 root_path = ''
-in_path = os.path.join(root_path, '2-process')
-out_path = os.path.join(root_path, '3-final')
+in_path = os.path.join(root_path, '../2-process')
+out_path = os.path.join(root_path, '../3-final')
 
 
 
